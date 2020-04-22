@@ -14,7 +14,6 @@ for i in range(0, len(apis['items'])):
 
     for stage in range(0, len(stages['item'])):
         stageName = stages['item'][stage]['stageName']
-        # stageList.append(sbody = obj['Body']tageName)
         export = client.get_export(restApiId=id, stageName=stageName, exportType='swagger', accepts='application/json')
         body = export['body']
         filename = stageName + '-' + name + '.json'
