@@ -9,7 +9,6 @@ def backup():
         pool_id = user_pools['UserPools'][pool]['Id']
         user_list = cognito.list_users(UserPoolId=pool_id)
         data = user_list['Users']
-        print(data)
         export_csv(pool_id, data, 'backup')
 
 def getheaders():
