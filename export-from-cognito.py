@@ -7,13 +7,13 @@ user_pools = cognito.list_user_pools(MaxResults=20)                 # Change the
 def backup():
     for pool in range(0, len(user_pools['UserPools'])):
         pool_id = user_pools['UserPools'][pool]['Id']
-        user_list = cognito.list_users(UserPoolId = pool_id)
+        user_list = cognito.list_users(UserPoolId=pool_id)
         data = user_list['Users']
         export_csv(pool_id, data, 'backup')
 
 def getheaders():
     pool_id = user_pools['UserPools'][0]['Id']                      # Using index value as 0 because the header format is common for all the pools created in Cognito
-    headers = cognito.get_csv_header(UserPoolId = pool_id)
+    headers = cognito.get_csv_header(UserPoolId=pool_id)
     data = headers['CSVHeader']
     export_csv(pool_id, data, 'headers')
 
